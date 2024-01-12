@@ -14,7 +14,6 @@ def canUnlockAll(boxes):
 
     openedBoxIndices = [0]
     for idx in openedBoxIndices:
-        print(idx)
         for ele in boxes[idx]:
             if ele not in openedBoxIndices and ele < len(boxes):
                 openedBoxIndices.append(ele)
