@@ -2,6 +2,9 @@
 """ kjshjkhskjshkjdhjh """
 import sys
 
+
+
+
 if __name__ == "__main__":
     status_codes = [200, 301, 400, 401, 403, 404, 405, 500]
     total_size = 0
@@ -30,3 +33,9 @@ if __name__ == "__main__":
             if value:
                 print(f"{key}: {value}")
         raise
+else:
+    print(f"File size: {total_size}")
+    for key, value in sorted_status_hash.items():
+        if value:
+            print(f"{key}: {value}")
+
