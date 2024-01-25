@@ -34,9 +34,9 @@ try:
                 total_size += file_size
             except (IndexError, ValueError, TypeError):
                 continue
-        read_lines += 1
-        if read_lines % 10 == 0:
-            print_stats()
+            read_lines += 1
+            if read_lines % 10 == 0:
+                print_stats()
     print_stats()
 
 except KeyboardInterrupt:
