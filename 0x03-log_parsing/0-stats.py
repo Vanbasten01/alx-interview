@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" kjshjkhskjshkjdhjh """
+"""A script to compute metrics based on input lines."""
+
 import sys
 
 
@@ -10,11 +11,12 @@ status_hash = {}
 
 
 def print_stats():
-    """kljsakljs klsjakasj """
+    """Print metrics based on the specified format."""
     print(f"File size: {total_size}")
-    for key, value in sorted(status_hash.items()):
-        if value:
-            print(f"{key}: {value}")
+    for code in sorted(status_codes):
+        count = status_hash.get(code, 0)
+        if count > 0:
+            print(f"{code}: {count}")
 
 
 try:
@@ -24,10 +26,11 @@ try:
             try:
                 status_code = int(args[-2])
                 if status_code in status_codes:
-                    status_hash[status_code] = status_hash.get(status_code, 0) + 1
+                    status_hash[status_code] = status_hash.get(
+                            status_code, 0) + 1
                     file_size = int(args[-1])
                     total_size += file_size
-            except  (IndexError, ValueError, TypeError):
+            except (IndexError, ValueError, TypeError):
                 continue
         read_lines += 1
         if read_lines % 10 == 0:
