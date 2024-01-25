@@ -21,22 +21,21 @@ def print_stats():
 try:
     for line in sys.stdin:
         args = line.split()
-        if len(args) == 9:
-            try:
-                status_code = int(args[-2])
-                if status_code in status_codes:
-                    status_hash[status_code] = status_hash.get(
-                            status_code, 0) + 1
-            except (IndexError, ValueError, TypeError):
-                continue
-            try:
-                file_size = int(args[-1])
-                total_size += file_size
-            except (IndexError, ValueError, TypeError):
-                continue
-            read_lines += 1
-            if read_lines % 10 == 0:
-                print_stats()
+        try:
+            status_code = int(args[-2])
+            if status_code in status_codes:
+                status_hash[status_code] = status_hash.get(
+                    status_code, 0) + 1
+        except (IndexError, ValueError, TypeError):
+            continue
+        try:
+            file_size = int(args[-1])
+            total_size += file_size
+        except (IndexError, ValueError, TypeError):
+            continue
+        read_lines += 1
+        if read_lines % 10 == 0:
+            print_stats()
     print_stats()
 
 except KeyboardInterrupt:
