@@ -27,8 +27,11 @@ try:
                 if status_code in status_codes:
                     status_hash[status_code] = status_hash.get(
                             status_code, 0) + 1
-                    file_size = int(args[-1])
-                    total_size += file_size
+            except (IndexError, ValueError, TypeError):
+                continue
+            try:
+                file_size = int(args[-1])
+                total_size += file_size
             except (IndexError, ValueError, TypeError):
                 continue
         read_lines += 1
