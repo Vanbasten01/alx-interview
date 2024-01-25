@@ -20,7 +20,13 @@ def print_stats():
 
 try:
     for line in sys.stdin:
+        read_lines += 1
         args = line.split()
+        try:
+            file_size = int(args[-1])
+            total_size += file_size
+        except (IndexError, ValueError, TypeError):
+            continue
         try:
             status_code = int(args[-2])
             if status_code in status_codes:
@@ -28,16 +34,9 @@ try:
                     status_code, 0) + 1
         except (IndexError, ValueError, TypeError):
             continue
-        try:
-            file_size = int(args[-1])
-            total_size += file_size
-        except (IndexError, ValueError, TypeError):
-            continue
-        read_lines += 1
         if read_lines % 10 == 0:
             print_stats()
     print_stats()
 
 except KeyboardInterrupt:
     print_stats()
-    raise
