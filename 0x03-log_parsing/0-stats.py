@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """A script to compute metrics based on input lines."""
-
 import sys
 
 
@@ -13,7 +12,7 @@ status_hash = {}
 def print_stats():
     """Print metrics based on the specified format."""
     print(f"File size: {total_size}")
-    for code in sorted(status_codes):
+    for code in status_codes:
         count = status_hash.get(code, 0)
         if count > 0:
             print(f"{code}: {count}")
@@ -39,3 +38,4 @@ try:
 
 except KeyboardInterrupt:
     print_stats()
+    raise
