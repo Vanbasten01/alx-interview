@@ -2,12 +2,13 @@
 """This module provides functions for text processing."""
 from typing import List
 
+
 def validUTF8(data: List[int]) -> bool:
     """Process the given text by removing special characters
     and converting to lowercase."""
     num_bytes = 0
-    mask = 1 << 7
     for byte in data:
+        mask = 1 << 7
         if not num_bytes:
             while byte & mask:
                 num_bytes += 1
