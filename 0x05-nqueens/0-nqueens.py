@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """N Queens Solver: Solves the N Queens problem."""
+
+
 import sys
 
 
@@ -36,8 +38,8 @@ def solve_n_queens(size):
             return
 
         for col in range(size):
-            if (col in visited_cols
-                    or (row + col) in visited_pos_diag or
+            if (col in visited_cols or
+                    (row + col) in visited_pos_diag or
                     (row - col) in visited_neg_diag):
                 continue
 
