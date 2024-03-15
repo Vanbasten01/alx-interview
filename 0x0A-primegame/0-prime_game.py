@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 """ Prime Game: Determine the winner based on prime number elimination """
 
+
 def is_prime(n):
     """Check if n is prime"""
     for i in range(2, int(n ** 0.5) + 1):
         if not n % i:
             return False
     return True
+
 
 def add_prime(n, primes):
     """Add primes up to n"""
@@ -17,6 +19,7 @@ def add_prime(n, primes):
                 primes.append(i)
             else:
                 primes.append(0)
+
 
 def isWinner(x, nums):
     """Determine winner based on prime elimination"""
@@ -40,4 +43,3 @@ def isWinner(x, nums):
         return "Ben"
 
     return None
-
